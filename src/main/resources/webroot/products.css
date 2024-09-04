@@ -1,0 +1,91 @@
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #ADD8E6; /* Fondo azul claro */
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 100vh;
+}
+
+/* Tabla de productos */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    background-color: #ffffff; /* Fondo blanco */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #dddddd; /* Línea divisoria suave */
+}
+
+th {
+    background-color: #f4f4f4; /* Fondo ligeramente gris para los encabezados */
+}
+
+/* Mensajes de error */
+.error-message {
+    color: red; /* Mensaje de error en rojo */
+    font-weight: bold;
+}
+
+/* Títulos */
+h1, h2 {
+    color: #333; /* Color del texto */
+    text-align: center;
+    width: 100%;
+    margin-top: 20px;
+}
+
+/* Botones */
+button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    height: 40px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    padding: 0 15px;
+    margin-top: 10px;
+    align-self: flex-start;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+.delete-button {
+    background-color: #f44336; /* Rojo para el botón de eliminación */
+    color: white;
+    border: none;
+    padding: 5px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-left: 10px;
+}
+
+.delete-button:hover {
+    background-color: #c62828; /* Rojo más oscuro en hover */
+}
+
+/* Estilos del popup */
+#postrespmsg {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #4CAF50;
+    color: white;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+}

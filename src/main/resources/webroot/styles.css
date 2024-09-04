@@ -1,0 +1,184 @@
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #ADD8E6;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 100vh;
+}
+
+/* Barra de navegación */
+nav {
+    background-color: #333;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 10px 0;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 20px;
+}
+
+nav ul li {
+    display: inline;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+/* Títulos */
+h1 {
+    color: #333;
+    text-align: center;
+    width: 100%;
+    margin-top: 20px;
+}
+
+h2 {
+    color: #333;
+    text-align: center;
+    width: 100%;
+    margin-top: 20px;
+}
+
+/* Contenedor principal */
+.container {
+    display: flex;
+    width: 100%;
+    max-width: 1200px;
+    margin-top: 20px;
+    gap: 20px; /* Espacio entre las dos secciones */
+}
+
+/* Sección para añadir productos */
+.form-container {
+    flex: 1;
+    padding: 20px;
+    box-sizing: border-box;
+    max-width: 50%; /* Asegura que esta sección no ocupe más de la mitad */
+}
+
+/* Sección para ver productos */
+.product-list-container {
+    flex: 1;
+    padding: 20px;
+    box-sizing: border-box;
+    max-width: 50%; /* Asegura que esta sección no ocupe más de la mitad */
+    border-left: 2px solid #ddd; /* Línea divisoria opcional */
+}
+
+/* Contenedor de lista de productos */
+#product-list {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 100%; /* Asegura que el contenedor de la lista de productos ocupe toda la anchura disponible */
+}
+
+/* Estilos para los productos */
+.product-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+    border-bottom: 1px solid #ddd;
+}
+
+.product-name {
+    flex: 1;
+}
+
+.product-item::before {
+    content: "\2714";
+    color: green;
+    margin-right: 10px;
+    font-size: 18px;
+}
+
+/* Estilos adicionales para el formulario */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+label {
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+input, textarea {
+    font-size: 16px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%; /* Ancho completo del contenedor */
+    box-sizing: border-box;
+}
+
+textarea {
+    height: 100px;
+}
+
+/* Botones */
+button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    height: 40px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    padding: 0 15px;
+    margin-top: 10px;
+    align-self: flex-start;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+.delete-button {
+    background-color: #f44336;
+    color: white;
+    border: none;
+    padding: 5px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-left: 10px;
+}
+
+.delete-button:hover {
+    background-color: #c62828;
+}
+
+/* Estilos del popup */
+#postrespmsg {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #4CAF50;
+    color: white;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+}
+

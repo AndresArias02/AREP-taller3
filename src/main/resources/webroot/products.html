@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product List</title>
+    <link rel="stylesheet" href="products.css">
+</head>
+<body>
+<!-- Barra de navegación -->
+<nav>
+    <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="addProduct.html">Añadir Productos</a></li>
+        <li><a href="#view-products-section">Ver Productos</a></li>
+    </ul>
+</nav>
+<h1>Product List</h1>
+<p id="getrespmsg" class="error-message"></p>
+<table id="product-table">
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Description</th>
+    </tr>
+    </thead>
+    <tbody id="product-list">
+    </tbody>
+</table>
+<script src="products.js"></script>
+</body>
+</html>

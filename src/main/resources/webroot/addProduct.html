@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping List</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<!-- Barra de navegación -->
+<nav>
+    <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="#add-product-section">Añadir Productos</a></li>
+        <li><a href="products.html">Ver Productos</a></li>
+    </ul>
+</nav>
+
+<h1>Shopping List</h1>
+
+<div class="container">
+    <!-- Sección para añadir productos -->
+    <div id="add-product-section" class="form-container">
+        <h2>Añadir Producto</h2>
+        <form id="addProductForm">
+            <label for="postname">Nombre del Producto:</label><br>
+            <input type="text" id="postname" name="name"><br><br>
+
+            <label for="description">Descripción:</label><br>
+            <textarea id="description" name="description"></textarea><br><br>
+
+            <button type="submit">Añadir Producto</button>
+        </form>
+
+        <div id="postrespmsg"></div>
+    </div>
+
+    <!-- Sección para ver productos en el carrito -->
+    <div id="view-products-section" class="product-list-container">
+        <h2>Lista de Productos</h2>
+        <div id="product-list"></div>
+    </div>
+</div>
+
+<script src="scripts.js"></script>
+</body>
+</html>
