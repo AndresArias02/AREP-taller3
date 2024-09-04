@@ -1,7 +1,7 @@
 /* Estilos generales */
 body {
     font-family: Arial, sans-serif;
-    background-color: #ADD8E6; /* Fondo azul claro */
+    background-color: #ADD8E6; /* Azul claro */
     margin: 0;
     padding: 0;
     display: flex;
@@ -13,7 +13,7 @@ body {
 
 /* Barra de navegación */
 nav {
-    background-color: #333;
+    background-color: #333; /* Gris oscuro */
     width: 100%;
     display: flex;
     justify-content: center;
@@ -42,55 +42,54 @@ nav ul li a:hover {
     text-decoration: underline;
 }
 
+/* Contenedor del ícono */
+.icon-container {
+    margin: 60px 0 60px 0;
+    display: flex;
+    justify-content: center;
+}
+
 /* Títulos */
-h1 {
-    color: #333;
+h1, h2 {
+    color: #333; /* Gris oscuro */
     text-align: center;
     width: 100%;
     margin-top: 20px;
 }
 
-h2 {
-    color: #333;
-    text-align: center;
+/* Contenedor principal */
+.main-container {
+    display: flex;
     width: 100%;
-    margin-top: 20px;
+    max-width: 1200px;
+    margin: 20px auto; /* Centra el contenedor y agrega espacio arriba y abajo */
+    gap: 20px; /* Espacio entre las dos secciones */
+    justify-content: center; /* Centra los contenedores horizontalmente */
 }
 
-/* Contenedor de productos */
-#view-products-section {
-    width: 100%; /* Asegura que el contenedor ocupe todo el ancho */
+/* Sección para el formulario de nombre */
+.form-container {
+    flex: 1;
     padding: 20px;
     box-sizing: border-box;
-}
-
-/* Tabla de productos */
-#product-table {
-    width: 100%; /* Asegura que la tabla ocupe todo el ancho */
-    border-collapse: collapse;
-    background-color: #fff;
+    max-width: 50%; /* Limita esta sección a la mitad de la pantalla */
+    background-color: #ADD8E6; /* Mismo color de fondo que el body */
+    border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Alinea el contenido a la izquierda */
 }
 
-th, td {
-    padding: 10px;
-    text-align: center; /* Centra el texto en las celdas */
-}
-
-/* Encabezados de tabla */
-th {
-    background-color: #333; /* Mismo color de fondo que la barra de navegación */
-    color: white; /* Color del texto en los encabezados */
-}
-
-/* Quitar borde inferior de las celdas */
-td {
-    border-bottom: none; /* Elimina la línea divisoria de las celdas */
-}
-
-/* Eliminar líneas divisorias entre filas */
-tr {
-    border-bottom: none; /* Elimina las líneas divisorias entre filas */
+/* Sección para la respuesta */
+#responseContainer {
+    flex: 1;
+    padding: 20px;
+    box-sizing: border-box;
+    max-width: 50%; /* Limita esta sección a la mitad de la pantalla */
+    background-color: #ADD8E6; /* Mismo color de fondo que el body */
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 /* Estilos adicionales para el formulario */
@@ -98,11 +97,7 @@ form {
     display: flex;
     flex-direction: column;
     gap: 10px;
-}
-
-label {
-    font-size: 18px;
-    margin-bottom: 5px;
+    width: 100%; /* Asegura que el formulario ocupe el ancho completo del contenedor */
 }
 
 input, textarea {
@@ -110,17 +105,13 @@ input, textarea {
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    width: 100%;
+    width: 100%; /* Ancho completo del contenedor */
     box-sizing: border-box;
-}
-
-textarea {
-    height: 100px;
 }
 
 /* Botones */
 button {
-    background-color: #4CAF50;
+    background-color: #4CAF50; /* Verde */
     color: white;
     border: none;
     height: 40px;
@@ -129,25 +120,11 @@ button {
     border-radius: 5px;
     padding: 0 15px;
     margin-top: 10px;
-    align-self: flex-start;
+    align-self: flex-start; /* Alinea el botón a la izquierda */
 }
 
 button:hover {
     background-color: #45a049;
-}
-
-.delete-button {
-    background-color: #f44336;
-    color: white;
-    border: none;
-    padding: 5px;
-    cursor: pointer;
-    border-radius: 5px;
-    margin-left: 10px;
-}
-
-.delete-button:hover {
-    background-color: #c62828;
 }
 
 /* Estilos del popup */

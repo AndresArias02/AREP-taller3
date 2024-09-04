@@ -1,10 +1,13 @@
 package edu.eci.arep.services;
 
 import edu.eci.arep.utils.ShoppingListMemory;
-
 import java.net.URLDecoder;
 import java.nio.charset.StandardCharsets;
 
+/**
+ * Service class for deleteProduct
+ * @author Andrés Arias
+ */
 public class DeleteProductService implements RestService {
 
     private ShoppingListMemory listService;
@@ -13,6 +16,11 @@ public class DeleteProductService implements RestService {
         this.listService = listService;
     }
 
+    /**
+     * Restservice's method requested
+     * @param request Uri
+     * @return response
+     */
     @Override
     public String response(String request) {
         // Extraer el nombre del producto desde la URL

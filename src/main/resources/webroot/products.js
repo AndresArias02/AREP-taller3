@@ -7,29 +7,30 @@ function loadProducts() {
             productList.innerHTML = ""; // Limpiar la lista antes de agregar nuevos elementos
 
             if (Array.isArray(data) && data.length > 0) {
-                data.forEach(product => {
-                    const productItem = document.createElement("div");
-                    productItem.className = "product-item";
+                data.forEach((product, index) => {
+                    const productItem = document.createElement("tr"); // Cambiado a 'tr' para las filas de la tabla
 
-                    const productName = document.createElement("span");
-                    productName.className = "product-name";
-                    productName.textContent = `Name: ${product.name}`;
+                    const productIndex = document.createElement("td");
+                    productIndex.textContent = index + 1; // Numeración de productos
 
-                    const productDescription = document.createElement("p");
-                    productDescription.className = "product-description";
-                    productDescription.textContent = `Description: ${product.description}`;
+                    const productName = document.createElement("td");
+                    productName.textContent = product.name; // Nombre del producto
 
+                    const productDescription = document.createElement("td");
+                    productDescription.textContent = product.description; // Descripción del producto
+
+                    productItem.appendChild(productIndex);
                     productItem.appendChild(productName);
                     productItem.appendChild(productDescription);
-                    productList.appendChild(productItem);
+                    document.getElementById("product-list").appendChild(productItem);
                 });
             } else {
-                productList.innerHTML = "<p>No products available.</p>";
+                productList.innerHTML = "<tr><td colspan='3'>No hay productos agregados.</td></tr>"; // Mensaje en la tabla
             }
         })
         .catch(error => {
             console.error("Error fetching products:", error);
-            document.getElementById("getrespmsg").textContent = "Failed to load products.";
+            document.getElementById("getrespmsg").textContent = "Error al agregar productos.";
         });
 }
 

@@ -1,8 +1,7 @@
-package edu.eci.arep;
+package edu.eci.arep.servers;
 
 import edu.eci.arep.Annotation.GetMapping;
 import edu.eci.arep.Annotation.RestController;
-
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.Parameter;
@@ -11,7 +10,19 @@ import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * SpringTest lab
+ * @author Andrés Arias
+ */
 public class SpringTestLab {
+    /**
+     * method to invoke all method with an annotation requested
+     * @param args args
+     * @throws ClassNotFoundException if a CNF error occurs
+     * @throws MalformedURLException if a MFU error occurs
+     * @throws InvocationTargetException if an IT error occurs
+     * @throws IllegalAccessException if a IA error occurs
+     */
     public static void test(String[] args) throws ClassNotFoundException, MalformedURLException, InvocationTargetException, IllegalAccessException {
         Class c = Class.forName(args[0]);
         Map<String, Method> services = new HashMap<>();

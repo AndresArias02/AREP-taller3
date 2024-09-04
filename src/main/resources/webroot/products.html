@@ -12,21 +12,24 @@
     <ul>
         <li><a href="index.html">Inicio</a></li>
         <li><a href="addProduct.html">Añadir Productos</a></li>
-        <li><a href="#view-products-section">Ver Productos</a></li>
+        <li><a href="products.html">Ver Productos</a></li>
     </ul>
 </nav>
 <h1>Product List</h1>
 <p id="getrespmsg" class="error-message"></p>
-<table id="product-table">
-    <thead>
-    <tr>
-        <th>Name</th>
-        <th>Description</th>
-    </tr>
-    </thead>
-    <tbody id="product-list">
-    </tbody>
-</table>
+<div id="view-products-section">
+    <table id="product-table">
+        <thead>
+        <tr>
+            <th>#</th> <!-- Nueva columna para numeración -->
+            <th>Nombre</th>
+            <th>Descripción</th>
+        </tr>
+        </thead>
+        <tbody id="product-list">
+        </tbody>
+    </table>
+</div>
 <script src="products.js"></script>
 </body>
 </html>

@@ -1,20 +1,31 @@
-package edu.eci.arep;
+package edu.eci.arep.servers;
 
 import edu.eci.arep.Annotation.RequestParam;
 import edu.eci.arep.services.RestService;
-
 import java.io.*;
 import java.lang.reflect.*;
 import java.net.Socket;
 import java.util.*;
 
+
+/**
+ * Class that manage the requests
+ * @author Andrés Arias
+ */
 public class ClientHandler implements Runnable {
     private Socket clientSocket;
 
+    /**
+     * costructor of the class
+     * @param socket socket used
+     */
     public ClientHandler(Socket socket) {
         this.clientSocket = socket;
     }
 
+    /**
+     * Method tha manage the threads for the petitions
+     */
     @Override
     public void run() {
         try (BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
@@ -39,6 +50,16 @@ public class ClientHandler implements Runnable {
         }
     }
 
+    /**
+     * Method tha recives the petitions
+     * @param method type of method
+     * @param URI uri requested
+     * @param out printWriter
+     * @param dataOut BufferOutPutStream
+     * @throws IOException If an Io error occurs
+     * @throws InvocationTargetException if an IT error occurs
+     * @throws IllegalAccessException
+     */
     private void handleRequest(String method, String URI, PrintWriter out, BufferedOutputStream dataOut) throws IOException, InvocationTargetException, IllegalAccessException {
 
         System.out.println("Handling request: " + method + " " + URI);
@@ -52,12 +73,10 @@ public class ClientHandler implements Runnable {
                 Integer contentLength = null;
 
                 if (URI.startsWith("/app")) {
-                    System.out.println("----------------------- SPARK -----------------------");
                     System.out.println("");
                     responseBody = callService(URI, method);
                     contentLength = responseBody.getBytes().length;
                 } else if (URI.startsWith("/Spring")) {
-                    System.out.println("----------------------- SPRING -----------------------");
                     System.out.println("");
                     responseBody = callMethod(URI);
                     contentLength = responseBody.getBytes().length;
@@ -80,6 +99,13 @@ public class ClientHandler implements Runnable {
         }
     }
 
+    /**
+     * Metod that defines the service we gootta use
+     * @param fileRequested file requested
+     * @param out printWriter
+     * @param dataOut BufferOutPutStream
+     * @throws IOException If an Io error occurs
+     */
     private void handleGetRequest(String fileRequested, PrintWriter out, BufferedOutputStream dataOut) throws IOException {
         File file = new File(HttpServer.WEB_ROOT, fileRequested);
         int fileLength = (int) file.length();
@@ -104,12 +130,25 @@ public class ClientHandler implements Runnable {
         }
     }
 
+    /**
+     * method used for spark framework
+     * @param URI uri
+     * @param method type of method
+     * @return response of the service
+     */
     private String callService(String URI, String method) {
         String response = "";
         RestService restService = SparkServer.findHandler(cleanURI(URI), method);
         return restService.response(URI);
     }
 
+    /**
+     * method used for spring boot framework
+     * @param URI uri
+     * @return response of the service
+     * @throws InvocationTargetException If an IT error occurs
+     * @throws IllegalAccessException If an IA error occurs
+     */
     private String callMethod(String URI) throws InvocationTargetException, IllegalAccessException {
         Method springMethod = SpringServer.findMappingMethod(cleanURI(URI));
         Map<String, String> queryParams = extractQueryParams(URI);
@@ -125,6 +164,11 @@ public class ClientHandler implements Runnable {
         return response;
     }
 
+    /**
+     * check if the method has the annotation @Requestparam
+     * @param m method
+     * @return flag with the value true if so ot false if not
+     */
     private Boolean checkIfHasRequestParam(Method m) {
         for (Parameter p : m.getParameters()) {
             if (p.isAnnotationPresent(RequestParam.class)) {
@@ -134,6 +178,12 @@ public class ClientHandler implements Runnable {
         return false;
     }
 
+    /**
+     * Get the parameters for methods that need parameters
+     * @param method method
+     * @param queryParams map of queryParams
+     * @return parameters
+     */
     private Object[] getParameters(Method method, Map<String, String> queryParams) {
         Parameter[] parameters = method.getParameters();
         Object[] params = new Object[parameters.length];
@@ -149,6 +199,11 @@ public class ClientHandler implements Runnable {
         return params;
     }
 
+    /**
+     * method that gets the queryParams
+     * @param URI uri
+     * @returnmap with the queryParams
+     */
     private Map<String, String> extractQueryParams(String URI) {
         Map<String, String> params = new HashMap<>();
         String[] parts = URI.split("\\?");
@@ -164,6 +219,11 @@ public class ClientHandler implements Runnable {
         return params;
     }
 
+    /**
+     * method that cleans the URI
+     * @param URI uri
+     * @return cleaned uri
+     */
     private String cleanURI(String URI) {
         int queryStartIndex = URI.indexOf('?');
         if (queryStartIndex != -1) {
@@ -172,17 +232,11 @@ public class ClientHandler implements Runnable {
         return URI;
     }
 
-    private void printRequestHeader(String requestLine, BufferedReader in) throws IOException {
-        System.out.println("Request line: " + requestLine);
-        String inputLine;
-        while ((inputLine = in.readLine()) != null) {
-            System.out.println("Header: " + inputLine);
-            if (!in.ready()) {
-                break;
-            }
-        }
-    }
-
+    /**
+     * Method that define the content Type of the file
+     * @param fileRequested file
+     * @return content type
+     */
     private String getContentType(String fileRequested) {
         if (fileRequested.endsWith(".html")) return "text/html";
         else if (fileRequested.endsWith(".css")) return "text/css";
@@ -192,6 +246,13 @@ public class ClientHandler implements Runnable {
         return "text/plain";
     }
 
+    /**
+     * method to get the file
+     * @param file file
+     * @param fileLength file's size
+     * @return the bytes of the file
+     * @throws IOException If an IO error occurs
+     */
     private byte[] readFileData(File file, int fileLength) throws IOException {
         byte[] fileData = new byte[fileLength];
         try (FileInputStream fileIn = new FileInputStream(file)) {

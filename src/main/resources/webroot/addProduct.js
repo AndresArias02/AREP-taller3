@@ -28,7 +28,7 @@ function loadGetMsg() {
                     productList.appendChild(productItem);
                 });
             } else {
-                productList.innerHTML = "<p>No products in the cart.</p>";
+                productList.innerHTML = "<p>No hay productos en la lista</p>";
             }
         })
         .catch(error => {
@@ -52,8 +52,8 @@ function loadPostMsg(event) {
             loadGetMsg(); // Recargar la lista de productos después de agregar uno nuevo
         })
         .catch(error => {
-            console.error("Error adding product:", error);
-            showPopup("Failed to add product."); // Mostrar error en el popup
+            console.error("Error al añadir producto:", error);
+            showPopup("Error al añadir producto."); // Mostrar error en el popup
         });
 }
 
@@ -69,7 +69,7 @@ function deleteProduct(productName) {
         })
         .catch(error => {
             console.error("Error deleting product:", error);
-            showPopup("Failed to delete product."); // Mostrar error en el popup
+            showPopup("Error al eliminar producto."); // Mostrar error en el popup
         });
 }
 

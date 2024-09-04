@@ -1,18 +1,30 @@
 package edu.eci.arep.services;
 
 import edu.eci.arep.utils.ShoppingListMemory;
-
 import java.net.URLDecoder;
 import java.nio.charset.StandardCharsets;
 
+/**
+ * Service class for addProduct
+ * @author Andrés Arias
+ */
 public class AddProductService implements RestService {
 
     private ShoppingListMemory cartService;
 
+    /**
+     * constructor of the class
+     * @param cartService shoppingListMemory
+     */
     public AddProductService(ShoppingListMemory cartService) {
         this.cartService = cartService;
     }
 
+    /**
+     * Restservice's method requested
+     * @param request Uri
+     * @return response
+     */
     @Override
     public String response(String request) {
         try {
@@ -34,19 +46,19 @@ public class AddProductService implements RestService {
                     }
                 }
 
-                if (name != null && description != null) {
+                if (name != null) {
                     if (cartService.getProducts().contains(name)) {
-                        return "{\"message\":\"Product already exists in the cart.\"}";
+                        return "{\"message\":\"El producto ya esta en la lista.\"}";
                     } else {
                         cartService.addProduct(name, description);
-                        return "{\"message\":\"Product added successfully.\"}";
+                        return "{\"message\":\"Producto añadido correctamente.\"}";
                     }
                 }
             }
-            return "{\"message\":\"Invalid request.\"}";
+            return "{\"message\":\"Petición invalida.\"}";
         } catch (Exception e) {
             e.printStackTrace();
-            return "{\"message\":\"Error processing request.\"}";
+            return "{\"message\":\"Error procesando la petición.\"}";
         }
     }
 }

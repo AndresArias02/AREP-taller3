@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- */
-
 package edu.eci.arep;
 
 /**
@@ -11,6 +7,9 @@ package edu.eci.arep;
  */
 
 import edu.eci.arep.Annotation.ComponentScan;
+import edu.eci.arep.servers.HttpServer;
+import edu.eci.arep.servers.SparkServer;
+import edu.eci.arep.servers.SpringServer;
 import edu.eci.arep.services.AddProductService;
 import edu.eci.arep.services.DeleteProductService;
 import edu.eci.arep.services.GetProductsService;
@@ -18,11 +17,19 @@ import edu.eci.arep.utils.ShoppingListMemory;
 
 import java.io.IOException;
 
+/**
+ *
+ */
 @ComponentScan(basePackage = "edu.eci.arep")
 public class App {
 
     private static final ShoppingListMemory shoppingListMemory = new ShoppingListMemory();
 
+    /**
+     * main class
+     * @param args args
+     * @throws IOException if a IO error occurs
+     */
     public static void main(String[] args) throws IOException {
         // Set the static files location
         SparkServer.staticFileLocation("target/classes/webroot");
@@ -33,7 +40,7 @@ public class App {
         // springService
         loadSpringService();
 
-        // Start the server
+        // Start the servers
         try {
             if (!HttpServer.getInstance().isRunning())
                 HttpServer.getInstance().start();
@@ -44,6 +51,9 @@ public class App {
 
     }
 
+    /**
+     * Method to load sparkFramework
+     */
     private static void loadSparkFramework(){
         SparkServer.get("/app/getProducts", (req) ->{
             GetProductsService getProductsService =  new GetProductsService(shoppingListMemory);
@@ -64,6 +74,9 @@ public class App {
         });
     }
 
+    /**
+     * Method to load SpringServer
+     */
     private static void loadSpringService(){
         SpringServer.getInstance();
     }

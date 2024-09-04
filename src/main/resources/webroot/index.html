@@ -4,51 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Agregar Nombre</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f8ff;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-        }
-        .form-container {
-            background-color: #ffffff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-        }
-        h1 {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        input[type="text"] {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-        button {
-            width: 100%;
-            padding: 10px;
-            background-color: #007bff;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-        button:hover {
-            background-color: #0056b3;
-        }
-        #visualName {
-            margin-top: 20px;
-            font-size: 18px;
-            color: #007bff;
-        }
-    </style>
+    <link rel="stylesheet" href="index.css">
 </head>
 <body>
 <!-- Barra de navegación -->
@@ -59,14 +15,22 @@
         <li><a href="products.html">Ver Productos</a></li>
     </ul>
 </nav>
-<div class="form-container">
-    <h1>Agregar Nombre</h1>
-    <form id="nameForm">
-        <input type="text" id="name" name="nombre" placeholder="Ingrese su nombre">
-        <button type="submit">Agregar</button>
-    </form>
-    <div id="visualName"></div>
+<div class="icon-container">
+    <!-- Ícono de lista de compras en formato SVG -->
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="80" height="80" fill="#4CAF50" class="icon">
+        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14zm-7-8h2v2h-2zm0 4h2v2h-2zm-4-4h2v2H8zm0 4h2v2H8z"/>
+    </svg>
 </div>
-<script src="welcome.js"></script>
+<div class="main-container">
+    <div class="form-container">
+        <h1>Bienvenido, ¿Cuál es tu Nombre?</h1>
+        <form id="nameForm">
+            <input type="text" id="name" name="nombre" placeholder="Ingrese su nombre">
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+    <div id="responseContainer"></div> <!-- Contenedor para mostrar la respuesta -->
+</div>
+<script src="index.js"></script>
 </body>
 </html>

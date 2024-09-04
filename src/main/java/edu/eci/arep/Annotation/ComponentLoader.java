@@ -6,10 +6,18 @@ import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.List;
 
+/**
+ * Component Loader
+ * @author Andrés Arias
+ */
 public class ComponentLoader {
 
     private static final List<Class<?>> classComponents = new ArrayList<>();
 
+    /**
+     * Constructor
+     * @param annotatedClass The annotated class
+     */
     public ComponentLoader(Class<?> annotatedClass) {
         try {
             if (annotatedClass.isAnnotationPresent(ComponentScan.class)) {
@@ -24,6 +32,11 @@ public class ComponentLoader {
         }
     }
 
+    /**
+     * Scan the package
+     * @param packageName The package name
+     * @throws Exception If an error occurs
+     */
     private void scanPackage(String packageName) throws Exception {
         ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
         String path = packageName.replace('.', '/');
@@ -38,7 +51,12 @@ public class ComponentLoader {
         }
     }
 
-
+    /**
+     * Find the components
+     * @param directory The directory
+     * @param packageName The package name
+     * @throws Exception If an error occurs
+     */
     private void findComponents(File directory, String packageName) throws Exception {
         if (!directory.exists()) return;
         File[] files = directory.listFiles();
